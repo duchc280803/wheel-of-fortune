@@ -130,7 +130,15 @@
       document.addEventListener("DOMContentLoaded", function () {
         const spinButton = document.querySelector(".ladi-spin-lucky-start");
         const spinScreen = document.querySelector(".ladi-spin-lucky-screen");
-        let hasSpun = false; // Cờ để kiểm tra trạng thái
+    
+        // Kiểm tra xem có cờ "hasSpun" trong localStorage hay không
+        let hasSpun = localStorage.getItem('hasSpun') === 'true'; // Chuyển đổi từ chuỗi sang boolean
+    
+        // Nếu đã quay, ngăn người dùng quay lại
+        if (hasSpun) {
+          alert("Bạn đã hết lượt quay. Chúc bạn may mắn lần sau!");
+          spinButton.disabled = true; // Vô hiệu hóa nút quay
+        }
     
         spinButton.addEventListener("click", function () {
           if (hasSpun) {
@@ -141,6 +149,7 @@
     
           // Đặt cờ để ngăn quay thêm lần nữa
           hasSpun = true;
+          localStorage.setItem('hasSpun', 'true'); // Lưu trạng thái vào localStorage
     
           // Giá trị quay tương ứng để vòng quay luôn dừng ở "500.000"
           const rotationDegrees = 360 * 5 + 202.5; // 202.5 là góc của "500.000"
