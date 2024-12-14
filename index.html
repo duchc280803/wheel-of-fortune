@@ -131,30 +131,30 @@
         const spinButton = document.querySelector(".ladi-spin-lucky-start");
         const spinScreen = document.querySelector(".ladi-spin-lucky-screen");
         let hasSpun = false; // Cờ để kiểm tra trạng thái
-
+    
         spinButton.addEventListener("click", function () {
           if (hasSpun) {
             // Thông báo nếu đã hết lượt quay
             alert("Bạn đã hết lượt quay. Chúc bạn may mắn lần sau!");
             return;
           }
-
+    
           // Đặt cờ để ngăn quay thêm lần nữa
           hasSpun = true;
-
+    
           // Giá trị quay tương ứng để vòng quay luôn dừng ở "500.000"
           const rotationDegrees = 360 * 5 + 202.5; // 202.5 là góc của "500.000"
-
+    
           // Thêm hiệu ứng quay
           spinScreen.style.transition = "transform 4s ease-out";
           spinScreen.style.transform = `rotate(${rotationDegrees}deg)`;
-
+    
           // Hiển thị thông báo sau khi quay xong
           setTimeout(() => {
             // Đặt lại vòng quay cố định tại "500.000"
             spinScreen.style.transition = "none";
             spinScreen.style.transform = `rotate(${202.5}deg)`;
-
+    
             // Hiển thị thông báo
             alert("Chúc mừng! Bạn đã trúng 500.000 VNĐ 🎉");
           }, 4000); // 4000ms = 4 giây (thời gian hiệu ứng quay)
